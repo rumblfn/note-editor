@@ -29,7 +29,7 @@ export const NewNote:FC = () => {
     }
 
     return (
-        <div style={{minHeight: '100vh'}}>
+        <div>
             <NewNoteInstruments setActions={setActions} />
             <NoteWhiteList 
                 publishNote={setModalActive}

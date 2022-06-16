@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { NoteActionTypes, NoteAction } from "../../types/note";
 import { Instrument } from "./instrument";
+import styles from './style.module.scss'
 
 interface Props {
     setActions: (newState: NoteAction[] | 
@@ -18,8 +19,8 @@ export const NewNoteInstruments:FC<Props> = ({setActions}) => {
     }
 
     return (
-        <div className="newArticleInstruments">
-            <div className="mainInstruments">
+        <div className={styles['instrument-list-box']}>
+            <div className={styles['instrument-list']}>
                 <Instrument 
                     handleNewAction={handleNewAction} 
                     awesomeClass='fa-heading' action={{ 

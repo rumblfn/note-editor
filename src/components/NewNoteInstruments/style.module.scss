@@ -1,0 +1,16 @@
+.instrument-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.instrument-list-box {
+    background-color: var(--app-bg-instruments);
+    height: fit-content;
+    min-height: 64px;
+    width: 100%;
+    box-shadow: 0px 5px 10px -1px rgba(34, 60, 80, 0.2);
+    padding: 16px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+}
