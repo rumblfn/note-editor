@@ -1,0 +1,20 @@
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    text-align: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: bg-light 15s infinite;
+    z-index: -1;
+
+    @keyframes bg-light {
+        0%   { background: var(--app-color-1) }
+        25%  { background: var(--app-color-2) }
+        60%  { background: var(--app-color-3) }
+        75%  { background: var(--app-color-4) }
+        100% { background: var(--app-color-5) }
+    }
+}

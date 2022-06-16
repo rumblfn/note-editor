@@ -1,0 +1,16 @@
+.header-link, 
+.header-link-active {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 23px;
+    text-decoration: none;
+    text-align: center;
+    letter-spacing: 0.25px;
+    background-color: var(--link-color);
+}
+
+.header-link:hover, 
+.header-link-active {
+    background-color: var(--link-color-active);
+}
