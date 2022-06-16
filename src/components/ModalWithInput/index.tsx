@@ -2,12 +2,12 @@ import { FC } from "react";
 import styles from './style.module.scss'
 
 interface ModalWithInputProps {
-    setActive: (value: boolean) => void;
-    setSubmitted: (value: boolean) => void;
+    publishNote: () => void;
     setTitle: (value: string) => void;
+    setActive: (value: boolean) => void;
 }
 
-export const ModalWithInput:FC<ModalWithInputProps> = ({setActive, setSubmitted, setTitle}) => {
+export const ModalWithInput:FC<ModalWithInputProps> = ({publishNote, setTitle, setActive}) => {
     return (
         <div className={styles.modal} onClick={() => setActive(false)}>
             <div className={styles.modal__content} onClick={e => e.stopPropagation()}>
@@ -19,10 +19,7 @@ export const ModalWithInput:FC<ModalWithInputProps> = ({setActive, setSubmitted,
                     />
                 </div>
                 <div className={styles.modal__submit}>
-                    <button onClick={() => {
-                        setActive(false);
-                        setSubmitted(true);
-                    }}>
+                    <button onClick={publishNote}>
                         Add
                     </button>
                 </div>

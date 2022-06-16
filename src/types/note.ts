@@ -79,10 +79,6 @@ export interface OneNote {
     actions: NoteAction[];
 }
 
-export interface addNoteAction {
-    payload: OneNote;
-}
-
 export type NoteActionReducer = AddNoteAction;
 
 export interface AddNoteAction {

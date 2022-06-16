@@ -15,12 +15,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <HashRouter>
+    <HashRouter>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
           <App />
-        </HashRouter>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </HashRouter>
   </React.StrictMode>
 );

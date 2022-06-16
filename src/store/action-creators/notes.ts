@@ -1,12 +1,15 @@
 import { Dispatch } from "react";
-import { addNoteAction, NoteAction } from "../../types/note";
+import { AddNoteAction, NoteAction, NoteActionTypesReducer } from "../../types/note";
 
 export const addNote = (
     title: string, 
     actions: NoteAction[], 
     id: string,
 ) => {
-    return async (dispatch: Dispatch<addNoteAction>) => {
-        dispatch({payload: { id, title, actions }})
+    return async (dispatch: Dispatch<AddNoteAction>) => {
+        dispatch({
+            type: NoteActionTypesReducer.ADD_NOTE,
+            payload: { id, title, actions }
+        })
     }
 }

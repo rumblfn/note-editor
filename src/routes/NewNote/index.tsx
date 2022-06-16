@@ -13,8 +13,7 @@ export const NewNote:FC = () => {
     const { addNote } = useActions();
 
     const [modalActive, setModalActive] = useState<boolean>(false);
-    const [submitted, setSubmitted] = useState<boolean>(false);
-    const [articleTitle, setArticleTitle] = useState<string>('');
+    const [noteTitle, setNoteTitle] = useState<string>('');
 
     const [actions, setActions] = useState<NoteAction[]>([
         {
@@ -23,8 +22,9 @@ export const NewNote:FC = () => {
         }
     ]);
 
-    if (submitted) {
-        addNote(articleTitle, actions, id);
+    const publishNote = () => {
+        setModalActive(false);
+        addNote(noteTitle, actions, id);
         navigate('/notes');
     }
 
@@ -39,9 +39,9 @@ export const NewNote:FC = () => {
             {
                 modalActive ?
                     <ModalWithInput
-                        setTitle={setArticleTitle}
-                        setActive={setModalActive} 
-                        setSubmitted={setSubmitted}
+                        setActive={setModalActive}
+                        setTitle={setNoteTitle}
+                        publishNote={publishNote}
                     />
                 : null
             }

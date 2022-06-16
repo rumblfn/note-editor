@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { NoteActionTypes, NoteAction } from "../../types/note";
+import { Instrument } from "./instrument";
 
 interface Props {
     setActions: (newState: NoteAction[] | 
@@ -9,128 +10,79 @@ interface Props {
 }
 
 export const NewNoteInstruments:FC<Props> = ({setActions}) => {
+    
+    const handleNewAction = (action: NoteAction) => {
+        setActions(prev => [
+            ...prev, action
+        ])
+    }
+
     return (
         <div className="newArticleInstruments">
             <div className="mainInstruments">
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.HEADING,
-                                content: ''
-                            }
-                        ])
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-heading' action={{ 
+                        type: NoteActionTypes.HEADING, 
+                        content: '' 
                     }}
-                >
-                    <i className="fa-solid fa-heading"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.QUOTE,
-                                content: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-quote-left' action={{
+                        type: NoteActionTypes.QUOTE, 
+                        content: ''
                     }}
-                >
-                    <i className="fa-solid fa-quote-left"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.IMAGE,
-                                content: ''
-                            }
-                        ])
+                />
+                <Instrument
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-image' action={{
+                        type: NoteActionTypes.IMAGE, 
+                        content: ''
                     }}
-                >
-                    <i className="fa-solid fa-image"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.LINK,
-                                content: '',
-                                linkTitle: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-link' action={{
+                        type: NoteActionTypes.LINK, 
+                        content: '', linkTitle: ''
                     }}
-                >
-                    <i className="fa-solid fa-link"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.TEXT,
-                                content: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-font' action={{
+                        type: NoteActionTypes.TEXT, 
+                        content: ''
                     }}
-                >
-                    <i className="fa-solid fa-font"></i>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.ITALIC_TEXT,
-                                content: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-italic' action={{
+                        type: NoteActionTypes.ITALIC_TEXT, 
+                        content: ''
                     }}
-                >
-                    <i className="fa-solid fa-italic"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.CODE_TEXT,
-                                content: '',
-                                language: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-code' action={{
+                        type: NoteActionTypes.CODE_TEXT, 
+                        content: '', language: ''
                     }}
-                >
-                    <i className="fa-solid fa-code"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.BOLD_TEXT,
-                                content: ''
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-bold' action={{
+                        type: NoteActionTypes.BOLD_TEXT, 
+                        content: ''
                     }}
-                >
-                    <i className="fa-solid fa-bold"/>
-                </button>
-                <button className="instrument"
-                    onClick={() => {
-                        setActions(prevState => [
-                            ...prevState,
-                            {
-                                type: NoteActionTypes.PRE_TEXT,
-                                content: []
-                            }
-                        ])
+                />
+                <Instrument 
+                    handleNewAction={handleNewAction} 
+                    awesomeClass='fa-tree' action={{
+                        type: NoteActionTypes.PRE_TEXT, 
+                        content: []
                     }}
-                >
-                    <i className="fa-solid fa-tree"/>
-                </button>
+                />
             </div>
         </div>
     )
