@@ -11,8 +11,8 @@ function App() {
     <div className="App">
       <Header/>
       <Routes>
-        <Route path="/new" element={<NewNote />}/>
-        <Route path="/*" element={<NotesPage />}/>
+        <Route path="/new" element={<NewNote />} />
+        <Route path="/*" element={<NotesPage />} />
       </Routes>
       <Background/>
     </div>
