@@ -39,9 +39,9 @@ const Header: FC = () => {
                         placeholder="Type some tags here ..." 
                     />
                 </div>
-                <div>
+                {/* <div>
                     <StyledLink href="/" text="Search" className="header-link" />
-                </div>
+                </div> */}
             </nav>
         </header>
     )
