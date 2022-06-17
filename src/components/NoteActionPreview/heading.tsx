@@ -9,7 +9,7 @@ interface HeadingProps {
 export const Heading:FC<HeadingProps> = ({
     content, variant
 }) => {
-    return (
-        <h4 className={styles[variant]}>{content}</h4>
-    )
+    if (content)
+        return <h4 className={styles[variant]}>{content}</h4>
+    return null
 }

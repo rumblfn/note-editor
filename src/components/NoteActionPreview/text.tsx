@@ -9,9 +9,11 @@ interface TextProps {
 export const Text:FC<TextProps> = ({
     content, variant
 }) => {
-    return (
-        <div className={styles[variant]}>
-            <p>{content}</p>
-        </div>
-    )
+    if (content)
+        return (
+            <div className={styles[variant]}>
+                <p>{content}</p>
+            </div>
+        )
+    return null
 }

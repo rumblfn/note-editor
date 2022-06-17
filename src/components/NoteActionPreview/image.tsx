@@ -6,10 +6,12 @@ interface ImageProps {
 }
 
 export const Image:FC<ImageProps> = ({content}) => {
-    return (
-        <img className={styles['img-action']}
+    if (content) 
+        return (
+            <img className={styles['img-action']}
                 src={content} 
                 alt="картинка"
-        />
-    )
+            />
+        )
+    return null
 }

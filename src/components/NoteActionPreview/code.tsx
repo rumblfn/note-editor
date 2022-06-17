@@ -11,11 +11,13 @@ interface SyntaxCodeProps {
 export const SyntaxCodePreview:FC<SyntaxCodeProps> = ({
     content, language 
 }) => {
-    return (
-        <div className={styles.code}>
-          <SyntaxHighlighter language={language} style={docco}>
-            {content}
-          </SyntaxHighlighter>
-        </div>
-    )
+    if (content)
+        return (
+            <div className={styles.code}>
+              <SyntaxHighlighter language={language} style={docco}>
+                {content}
+              </SyntaxHighlighter>
+            </div>
+        )
+    return null
 }

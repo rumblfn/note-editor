@@ -24,7 +24,7 @@ export const TextNote:FC<TextNoteProps> = ({
         <div className={styles["action-box"]}>
             <div onClick={() => {setAboutEditorMode(true)}}>
                 {content ? 
-                    <p>{content}</p>
+                    <pre>{content}</pre>
                     : <span>Click here to change</span>
                 }
             </div>
