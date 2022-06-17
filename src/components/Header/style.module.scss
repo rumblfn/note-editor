@@ -3,8 +3,9 @@
     height: 64px;
     align-items: center;
     justify-content: space-between;
-    max-width: 1280px;
+    // max-width: 1280px;
     margin: 0 auto;
+    gap: 16px;
 }
 
 .header-bg {
@@ -15,4 +16,18 @@
 
 .header-box-left {
     display: flex;
+}
+
+.input-box {
+    flex-grow: 1;
+}
+
+.input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 20px;
 }
