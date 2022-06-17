@@ -15,7 +15,7 @@ export const QuoteNote:FC<QuoteNoteProps> = ({
 
     return (
         <div className={styles["action-box"]}>
-            <input 
+            <input className={styles['input-quote']}
                 onBlur={(e) => {handleText(e.target.value)}}
                 type="text" placeholder="Some quote here"
                 onChange={e => setInputValue(e.target.value)}

@@ -11,8 +11,6 @@ export enum NoteActionTypes {
     ITALIC_TEXT = 'ITALIC_TEXT',
     CODE_TEXT = 'CODE_TEXT',
     BOLD_TEXT = 'BOLD_TEXT',
-    FORMULA = 'FORMULA',
-    PRE_TEXT = 'PRE_TEXT'
 }
 
 export interface HeadingAction {
@@ -27,12 +25,6 @@ export interface QuoteAction {
 
 export interface ImageAction {
     type: NoteActionTypes.IMAGE;
-    content: string;
-}
-
-export interface LinkAction {
-    type: NoteActionTypes.LINK;
-    linkTitle: string;
     content: string;
 }
 
@@ -57,21 +49,14 @@ export interface BoldTextAction {
     content: string;
 }
 
-export interface PreTextAction {
-    type: NoteActionTypes.PRE_TEXT;
-    content: string[];
-}
-
 export type NoteAction = 
     HeadingAction | 
     QuoteAction | 
-    ImageAction | 
-    LinkAction |
+    ImageAction |
     TextAction |
     ItalicTextAction |
     CodeTextAction |
-    BoldTextAction |
-    PreTextAction;
+    BoldTextAction;
 
 export interface OneNote {
     id: string;

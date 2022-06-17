@@ -11,6 +11,7 @@ export const DataList:FC<DataListProps> = ({
 }) => {
     return (
         <DatalistInput
+            style={{width: 'fit-content'}}
             placeholder="Type your lang here"
             label=""
             value={value}

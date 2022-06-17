@@ -18,6 +18,7 @@
     height: 40px;
     overflow: hidden;
     font-weight: bold;
+    width: 100%;
 }
 
 .code {
@@ -26,4 +27,14 @@
     resize: none;
     height: 90px;
     overflow: hidden;
+    width: 80%;
+}
+
+.italic {
+    background-color: transparent;
+    padding: 8px 12px;
+    resize: none;
+    overflow: hidden;
+    font-style: italic;
+    width: 100%;
 }

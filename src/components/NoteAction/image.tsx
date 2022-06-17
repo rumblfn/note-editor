@@ -1,6 +1,7 @@
 import { FC, useState, useRef } from "react";
 import { checkFileTypeAndSize } from "../static/checkFileTypeAndSize";
 import encodeImageFileAsURL from "../static/encodeImageFileAsURL";
+import { UploadFile } from "../UploadFile";
 import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
@@ -33,18 +34,10 @@ export const ImageNote:FC<QuoteNoteProps> = ({
 
     return (
         <div className={styles["action-box"]} style={{marginTop: 16}}>
-            {!imageData && <>
-                <label htmlFor="file-upload">
-                    <span>Select image</span>
-                    <button>
-                        <label htmlFor="file-upload">Upload</label>
-                    </button>
-                </label>
-                <input id="file-upload" type="file"
-                    onChange={e => {handleUploadedFileImage(e)}}/>
-            </>}
+            {!imageData && <UploadFile handler={handleUploadedFileImage}/>}
             {imageData &&
-                <img ref={imageUploadedRef} 
+                <img className={styles['img-action']} 
+                    ref={imageUploadedRef} 
                     src={imageData} 
                     alt="картинка"
             />}

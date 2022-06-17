@@ -44,13 +44,6 @@ export const NewNoteInstruments:FC<Props> = ({setActions}) => {
                 />
                 <Instrument 
                     handleNewAction={handleNewAction} 
-                    awesomeClass='fa-link' action={{
-                        type: NoteActionTypes.LINK, 
-                        content: '', linkTitle: ''
-                    }}
-                />
-                <Instrument 
-                    handleNewAction={handleNewAction} 
                     awesomeClass='fa-font' action={{
                         type: NoteActionTypes.TEXT, 
                         content: ''
@@ -75,13 +68,6 @@ export const NewNoteInstruments:FC<Props> = ({setActions}) => {
                     awesomeClass='fa-bold' action={{
                         type: NoteActionTypes.BOLD_TEXT, 
                         content: ''
-                    }}
-                />
-                <Instrument 
-                    handleNewAction={handleNewAction} 
-                    awesomeClass='fa-tree' action={{
-                        type: NoteActionTypes.PRE_TEXT, 
-                        content: []
                     }}
                 />
             </div>

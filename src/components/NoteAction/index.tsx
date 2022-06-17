@@ -3,12 +3,10 @@ import { NoteAction, NoteActionTypes } from "../../types/note";
 import { HeadingNote } from "./heading";
 import { QuoteNote } from "./quote";
 import { ImageNote } from "./image";
-import { LinkNote } from "./link";
 import { TextNote } from "./text";
 import { ItalicTextNote } from "./italicText";
 import { CodeNote } from "./code";
 import { BoldTextNote } from "./bold";
-import { PreTextNote } from "./preText";
 
 interface Props {
     index: number;
@@ -53,20 +51,6 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         ])
     }
 
-    const handleLinkTitle = (linkTitle: string) => {
-        const currentAction = actions[index]
-
-        if (currentAction.type === NoteActionTypes.LINK) {
-            currentAction.linkTitle = linkTitle;
-        }
-
-        setActions([
-            ...actions.slice(0, index),
-            currentAction,
-            ...actions.slice(index + 1, actions.length),
-        ])
-    }
-
     switch (action.type) {
         case NoteActionTypes.HEADING:
             return (
@@ -90,16 +74,6 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
                     content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.LINK:
-            return (
-                <LinkNote
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                    handleLinkTitle={handleLinkTitle}
-                    linkTitleAction={action.linkTitle}
                 />
             )
         case NoteActionTypes.TEXT:
@@ -132,14 +106,6 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
             return (
                 <BoldTextNote
                     content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.PRE_TEXT:
-            return (
-                <PreTextNote
-                    content={action.content[0]}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
