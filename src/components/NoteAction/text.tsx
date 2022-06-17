@@ -1,18 +1,24 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { Xmark } from "../Xmark";
+import NoteActionsContextHandlers from "./context";
 import styles from './style.module.scss'
 
 interface TextNoteProps {
-    removeAction: () => void;
     content: string;
-    handleText: (value: string) => void;
 }
 
 export const TextNote:FC<TextNoteProps> = ({
-    content, handleText, removeAction
+    content
 }) => {
     const [inputValue, setInputValue] = useState<string>(content);
     const [aboutEditorMode, setAboutEditorMode] = useState<boolean>(false)
+
+    const contextStore = useContext(NoteActionsContextHandlers)
+
+    if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
+        return <></>
+
+    const {handleText, removeAction} = contextStore
 
     return (
         <div className={styles["action-box"]}>

@@ -1,16 +1,16 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import NoteActionsContext from "../../routes/NewNote/context";
 import { NoteActionTypes, NoteAction } from "../../types/note";
 import { Instrument } from "./instrument";
 import styles from './style.module.scss'
 
-interface Props {
-    setActions: (newState: NoteAction[] | 
-                    ((prevState: NoteAction[]) 
-                        => NoteAction[])) 
-                => void;
-}
-
-export const NewNoteInstruments:FC<Props> = ({setActions}) => {
+export const NewNoteInstruments:FC = () => {
+    
+    const contextStore = useContext(NoteActionsContext)
+    if (!contextStore?.setActions) {
+        return <></>
+    }
+    const {setActions} = contextStore
     
     const handleNewAction = (action: NoteAction) => {
         setActions(prev => [

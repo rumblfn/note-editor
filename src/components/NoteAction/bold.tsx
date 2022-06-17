@@ -1,17 +1,21 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 import { DefaultTextArea } from "../DefaultTextArea";
 import { Xmark } from "../Xmark";
+import NoteActionsContextHandlers from "./context";
 import styles from './style.module.scss'
 
 interface BoldTextNoteProps {
-    removeAction: () => void;
     content: string;
-    handleText: (value: string) => void;
 }
 
-export const BoldTextNote: FC<BoldTextNoteProps> = ({
-    content, handleText, removeAction
-}) => {
+export const BoldTextNote: FC<BoldTextNoteProps> = ({content}) => {
+  
+    const contextStore = useContext(NoteActionsContextHandlers)
+
+    if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
+        return <></>
+
+    const {handleText, removeAction} = contextStore
 
   return (
     <div className={styles['action-box']}>

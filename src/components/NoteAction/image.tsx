@@ -1,19 +1,16 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef, useContext } from "react";
 import { checkFileTypeAndSize } from "../static/checkFileTypeAndSize";
 import encodeImageFileAsURL from "../static/encodeImageFileAsURL";
 import { UploadFile } from "../UploadFile";
 import { Xmark } from "../Xmark";
+import NoteActionsContextHandlers from "./context";
 import styles from './style.module.scss'
 
 interface QuoteNoteProps {
-    removeAction: () => void;
     content: string;
-    handleText: (value: string) => void;
 }
 
-export const ImageNote:FC<QuoteNoteProps> = ({
-    removeAction, content, handleText
-}) => {
+export const ImageNote:FC<QuoteNoteProps> = ({content}) => {
     const [imageData, setImageData] = useState<string>(content);
     const imageUploadedRef = useRef(null);
 
@@ -26,6 +23,13 @@ export const ImageNote:FC<QuoteNoteProps> = ({
             encodeImageFileAsURL(e, setImageDataFull);
         }
     }
+    
+    const contextStore = useContext(NoteActionsContextHandlers)
+
+    if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
+        return <></>
+
+    const {handleText, removeAction} = contextStore
 
     const setImageDataFull = (data: string) => {
         setImageData(data)

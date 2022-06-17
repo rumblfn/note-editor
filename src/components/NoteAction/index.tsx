@@ -1,24 +1,21 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
+import NoteActionsContext from "../../routes/NewNote/context";
 import { NoteAction, NoteActionTypes } from "../../types/note";
-import { HeadingNote } from "./heading";
-import { QuoteNote } from "./quote";
-import { ImageNote } from "./image";
-import { TextNote } from "./text";
-import { ItalicTextNote } from "./italicText";
-import { CodeNote } from "./code";
-import { BoldTextNote } from "./bold";
+import { ActionSwitcher } from "./actionSwitcher";
+import NoteActionsContextHandlers from "./context";
 
 interface Props {
     index: number;
     action: NoteAction;
     actions: NoteAction[];
-    setActions: (newState: NoteAction[] | 
-        ((prevState: NoteAction[]) 
-            => NoteAction[])) 
-    => void;
 }
 
-export const NoteActionComponent:FC<Props> = ({action, actions, setActions, index}) => {
+export const NoteActionComponent:FC<Props> = ({action, index, actions}) => {
+    const contextStore = useContext(NoteActionsContext)
+    if (!contextStore?.setActions) {
+        return <></>
+    }
+    const {setActions} = contextStore
 
     const removeAction = () => {
         setActions([
@@ -51,64 +48,11 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         ])
     }
 
-    switch (action.type) {
-        case NoteActionTypes.HEADING:
-            return (
-                <HeadingNote 
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.QUOTE:
-            return (
-                <QuoteNote 
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.IMAGE:
-            return (
-                <ImageNote 
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.TEXT:
-            return (
-                <TextNote
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.ITALIC_TEXT:
-            return (
-                <ItalicTextNote
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.CODE_TEXT:
-            return (
-                <CodeNote
-                    handleLang={handleLang}
-                    language={action.language}
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-        case NoteActionTypes.BOLD_TEXT:
-            return (
-                <BoldTextNote
-                    content={action.content}
-                    handleText={handleText}
-                    removeAction={removeAction}
-                />
-            )
-    }
+    return (
+        <NoteActionsContextHandlers.Provider value={{
+            removeAction, handleText, handleLang
+        }}>
+            <ActionSwitcher action={action} />
+        </NoteActionsContextHandlers.Provider>
+    )
 }

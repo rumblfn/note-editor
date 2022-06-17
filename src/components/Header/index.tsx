@@ -18,8 +18,11 @@ const Header: FC = () => {
     return (
         <header className={styles['header-bg']}>
             <nav className={styles['header-box']}>
-                <StyledLink href="/notes" text="Notes" className={clasNameNotes}/>
-                <StyledLink href="/new" text="New" className={classNameNew}/>
+                <div className={styles['header-box-left']}>
+                    <StyledLink href="/notes" text="Notes" className={clasNameNotes}/>
+                    <StyledLink href="/new" text="New" className={classNameNew}/>
+                </div>
+                <StyledLink href="/plain" text="Plain" className="header-link" />
             </nav>
         </header>
     )
