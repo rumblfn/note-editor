@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
 interface QuoteNoteProps {
@@ -20,11 +21,7 @@ export const QuoteNote:FC<QuoteNoteProps> = ({
                 onChange={e => setInputValue(e.target.value)}
                 value={inputValue}
             />
-            <span onClick={removeAction} 
-                className={styles["action-box-rm"]}
-            >
-                <i className="fa-solid fa-xmark" />
-            </span>
+            <Xmark removeAction={removeAction} />
         </div>
     )
 }

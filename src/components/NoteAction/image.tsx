@@ -1,6 +1,7 @@
 import { FC, useState, useRef } from "react";
 import { checkFileTypeAndSize } from "../static/checkFileTypeAndSize";
 import encodeImageFileAsURL from "../static/encodeImageFileAsURL";
+import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
 interface QuoteNoteProps {
@@ -47,12 +48,7 @@ export const ImageNote:FC<QuoteNoteProps> = ({
                     src={imageData} 
                     alt="картинка"
             />}
-            <span onClick={removeAction} 
-                className={styles["action-box-rm"]}
-                style={{backgroundColor: 'white', mixBlendMode: 'hard-light'
-            }}>
-                <i className="fa-solid fa-xmark" />
-            </span>
+            <Xmark removeAction={removeAction} />
         </div>
     )
 }

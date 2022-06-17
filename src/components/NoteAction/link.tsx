@@ -1,4 +1,5 @@
 import { FC, useRef, useState } from "react";
+import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
 interface LinkNoteProps {
@@ -49,11 +50,7 @@ export const LinkNote: FC<LinkNoteProps> = ({
           value={linkTitle}
         />
       </div>}
-      <span onClick={removeAction} 
-        className={styles["action-box-rm"]}
-      >
-        <i className="fa-solid fa-xmark" />
-      </span>
+      <Xmark removeAction={removeAction} />
     </div>
   );
 };

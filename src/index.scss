@@ -34,3 +34,16 @@ html[data-theme='light'] {
   --link-color-hover: #FFEEF2;
   --link-color-active: #FF92C2;
 }
+
+
+.react-datalist-input__textbox {
+  background-color: transparent;
+  padding: 8px 12px;
+  width: 100%;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: var(--content-color);
+  resize: none;
+  height: 40px;
+  overflow: hidden;
+}

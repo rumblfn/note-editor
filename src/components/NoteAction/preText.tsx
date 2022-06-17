@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
 interface PreTextNoteProps {
@@ -35,11 +36,7 @@ export const PreTextNote: FC<PreTextNoteProps> = ({
           />
         </div>
       }
-      <span onClick={removeAction} 
-        className={styles["action-box-rm"]}
-      >
-        <i className="fa-solid fa-xmark" />
-      </span>
+      <Xmark removeAction={removeAction} />
     </div>
   );
 };

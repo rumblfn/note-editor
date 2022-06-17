@@ -1,4 +1,6 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import { DefaultTextArea } from "../DefaultTextArea";
+import { Xmark } from "../Xmark";
 import styles from './style.module.scss'
 
 interface HeadingNoteProps {
@@ -10,22 +12,14 @@ interface HeadingNoteProps {
 export const HeadingNote:FC<HeadingNoteProps> = ({
     handleText, content, removeAction
 }) => {
-    const [inputValue, setInputValue] = useState<string>(content);
-
     return (
         <div className={styles["action-box"]}>
-            <input 
-                onBlur={(e) => {handleText(e.target.value)}}
-                type="text" 
-                placeholder="Heading"
-                onChange={e => setInputValue(e.target.value)}
-                value={inputValue}
+            <DefaultTextArea 
+                variant="heading" 
+                content={content} 
+                handleText={handleText}
             />
-            <span onClick={removeAction} 
-                className={styles["action-box-rm"]}
-            >
-                <i className="fa-solid fa-xmark" />
-            </span>
+            <Xmark removeAction={removeAction} />
         </div>
     )
 }

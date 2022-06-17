@@ -87,7 +87,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.IMAGE:
             return (
                 <ImageNote 
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
@@ -95,7 +95,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.LINK:
             return (
                 <LinkNote
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                     handleLinkTitle={handleLinkTitle}
@@ -105,7 +105,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.TEXT:
             return (
                 <TextNote
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
@@ -113,7 +113,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.ITALIC_TEXT:
             return (
                 <ItalicTextNote
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
@@ -123,7 +123,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
                 <CodeNote
                     handleLang={handleLang}
                     language={action.language}
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
@@ -131,7 +131,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.BOLD_TEXT:
             return (
                 <BoldTextNote
-                    content={action.content ? action.content : ''}
+                    content={action.content}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
@@ -139,7 +139,7 @@ export const NoteActionComponent:FC<Props> = ({action, actions, setActions, inde
         case NoteActionTypes.PRE_TEXT:
             return (
                 <PreTextNote
-                    content={typeof action.content === 'string' ? action.content : ''}
+                    content={action.content[0]}
                     handleText={handleText}
                     removeAction={removeAction}
                 />
