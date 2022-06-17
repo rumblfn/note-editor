@@ -1,10 +1,11 @@
-import { FC, useState, useRef } from "react";
-import DatalistInput, { useComboboxControls } from "react-datalist-input";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { FC, useState } from "react";
+import { useComboboxControls } from "react-datalist-input";
+import { DataList } from "../DataListInput";
 import { DefaultTextArea } from "../DefaultTextArea";
 import { Button } from "../NoteWhiteList/Button";
+import { SyntaxCode } from "../SyntaxCode";
 import { Xmark } from "../Xmark";
+import { ClearInput } from "../Xmark/clearInput";
 import styles from "./style.module.scss";
 
 interface CodeNoteProps {
@@ -31,52 +32,24 @@ export const CodeNote: FC<CodeNoteProps> = ({
 
   return (
     <div className={styles["action-box"]}>
-      {aboutEditorMode ? (<>
+      {aboutEditorMode ? 
         <DefaultTextArea 
           handleText={handleText}
           content={content}
           variant='code'
         />
-      </>
-      ) : (
-        <div
-          className={styles["action-box-simple-text"]}
-          onClick={() => {
-            setAboutEditorMode(true);
-          }}
-        >
-          <SyntaxHighlighter language={value} style={docco}>
-            {content ? content : "Click here to change"}
-          </SyntaxHighlighter>
-        </div>
-      )}
+      : <SyntaxCode 
+          content={content} 
+          setValue={setAboutEditorMode} 
+          value={value} 
+      />}
       {aboutEditorMode && (
         <div className={styles["data-list-input-box"]}>
-          <DatalistInput
-            style={{ width: "fit-content" }}
-            placeholder="Type your lang here"
-            label=""
-            value={value}
-            setValue={handleLang}
-            items={[
-              { id: "python", value: "python" },
-              { id: "javascript", value: "javascript" },
-              { id: "typescript", value: "typescript" },
-              { id: "php", value: "php" },
-              { id: "elixir", value: "elixir" },
-              { id: "reasonml", value: "reasonml" },
-            ]}
+          <DataList 
+            setValue={handleLang} 
+            value={value} 
           />
-          <span
-            onClick={() => {
-              setValue("");
-            }}
-          >
-            <i
-              className={`fa-solid fa-delete-left 
-                ${styles["data-list-input-clear"]}`}
-            />
-          </span>
+          <ClearInput setValue={setValue}/>
         </div>
       )}
       {aboutEditorMode && 
