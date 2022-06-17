@@ -13,26 +13,41 @@ interface ActionSwitcherProps {
 }
 
 export const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
-    let content = action.content
+    const content = action.content
 
     switch (action.type) {
         case NoteActionTypes.HEADING:
-            return <HeadingNote content={content}/>
+            return <HeadingNote 
+                content={content} 
+                tags={action.tags}
+        />
         case NoteActionTypes.QUOTE:
-            return <QuoteNote content={content}/>
+            return <QuoteNote 
+                content={content} 
+                tags={action.tags}
+        />
         case NoteActionTypes.IMAGE:
             return <ImageNote content={content}/>
         case NoteActionTypes.TEXT:
-            return <TextNote content={content}/>
+            return <TextNote 
+                content={content} 
+                tags={action.tags}
+        />
         case NoteActionTypes.ITALIC_TEXT:
-            return <ItalicTextNote content={content}/>
+            return <ItalicTextNote 
+                content={content} 
+                tags={action.tags}
+        />
         case NoteActionTypes.CODE_TEXT:
             return <CodeNote
                     language={action.language}
                     content={content}
                 />
         case NoteActionTypes.BOLD_TEXT:
-            return <BoldTextNote content={content}/>
+            return <BoldTextNote 
+                content={content} 
+                tags={action.tags}
+        />
         default:
             return null
     }

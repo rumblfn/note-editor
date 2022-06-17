@@ -6,9 +6,10 @@ import styles from './style.module.scss'
 
 interface HeadingNoteProps {
     content: string;
+    tags: string[]
 }
 
-export const HeadingNote:FC<HeadingNoteProps> = ({content}) => {
+export const HeadingNote:FC<HeadingNoteProps> = ({content, tags}) => {
     const contextStore = useContext(NoteActionsContextHandlers)
 
     if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
@@ -23,6 +24,10 @@ export const HeadingNote:FC<HeadingNoteProps> = ({content}) => {
                 content={content} 
                 handleText={handleText}
             />
+            <p style={{top: -26}} 
+                className={styles['tags-box']}
+            >{tags.join(', ')}
+            </p>
             <Xmark removeAction={removeAction} />
         </div>
     )

@@ -6,10 +6,11 @@ import styles from './style.module.scss'
 
 interface ItalicTextNoteProps {
     content: string;
+    tags: string[]
 }
 
 export const ItalicTextNote:FC<ItalicTextNoteProps> = ({
-    content
+    content, tags
 }) => {
     const contextStore = useContext(NoteActionsContextHandlers)
 
@@ -25,6 +26,7 @@ export const ItalicTextNote:FC<ItalicTextNoteProps> = ({
                 content={content}
                 variant='italic'
             />
+            <p>{tags.join(', ')}</p>
             <Xmark removeAction={removeAction} />
         </div>
     )

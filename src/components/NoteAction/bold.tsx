@@ -6,9 +6,10 @@ import styles from './style.module.scss'
 
 interface BoldTextNoteProps {
     content: string;
+    tags: string[]
 }
 
-export const BoldTextNote: FC<BoldTextNoteProps> = ({content}) => {
+export const BoldTextNote: FC<BoldTextNoteProps> = ({content, tags}) => {
   
     const contextStore = useContext(NoteActionsContextHandlers)
 
@@ -24,6 +25,7 @@ export const BoldTextNote: FC<BoldTextNoteProps> = ({content}) => {
         content={content} 
         handleText={handleText} 
       />
+      <p className={styles['tags-box']}>{tags.join(', ')}</p>
       <Xmark removeAction={removeAction} />
     </div>
   );

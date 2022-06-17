@@ -34,7 +34,7 @@ export const NoteActionComponent:FC<Props> = ({action, index, actions}) => {
         ) {
             const tags: string[] = []
             currentAction.content.split(' ').forEach(sub => {
-                if (sub[0] === '#' && sub.length > 0) {
+                if (sub[0] === '#' && sub.length > 1) {
                     tags.push(sub)
                 }
             })

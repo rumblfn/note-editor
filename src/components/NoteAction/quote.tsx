@@ -5,9 +5,10 @@ import styles from './style.module.scss'
 
 interface QuoteNoteProps {
     content: string;
+    tags: string[]
 }
 
-export const QuoteNote:FC<QuoteNoteProps> = ({content}) => {
+export const QuoteNote:FC<QuoteNoteProps> = ({content, tags}) => {
     const [inputValue, setInputValue] = useState<string>(content);
 
     const contextStore = useContext(NoteActionsContextHandlers)
@@ -25,6 +26,7 @@ export const QuoteNote:FC<QuoteNoteProps> = ({content}) => {
                 onChange={e => setInputValue(e.target.value)}
                 value={inputValue}
             />
+            <p className={styles['tags-box']}>{tags.join(', ')}</p>
             <Xmark removeAction={removeAction} />
         </div>
     )

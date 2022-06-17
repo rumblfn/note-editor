@@ -8,10 +8,6 @@ interface ContextInterface {
             => NoteAction[])) 
     => void;
     publishNote: (value: boolean) => void;
-    setTags: (newState: string[] | 
-        ((prevState: string[]) 
-            => string[])) 
-    => void;
 }
 
 const NoteActionsContext = createContext<ContextInterface | null>(null)

@@ -1,14 +1,16 @@
 import { FC, useContext, useState } from "react";
+import { DefaultTextArea } from "../DefaultTextArea";
 import { Xmark } from "../Xmark";
 import NoteActionsContextHandlers from "./context";
 import styles from './style.module.scss'
 
 interface TextNoteProps {
     content: string;
+    tags: string[]
 }
 
 export const TextNote:FC<TextNoteProps> = ({
-    content
+    content, tags
 }) => {
     const [inputValue, setInputValue] = useState<string>(content);
     const [aboutEditorMode, setAboutEditorMode] = useState<boolean>(false)
@@ -22,22 +24,12 @@ export const TextNote:FC<TextNoteProps> = ({
 
     return (
         <div className={styles["action-box"]}>
-            <div onClick={() => {setAboutEditorMode(true)}}>
-                {content ? 
-                    <pre>{content}</pre>
-                    : <span>Click here to change</span>
-                }
-            </div>
-            {aboutEditorMode &&
-                <textarea 
-                    onBlur={(e) => {
-                        setAboutEditorMode(true); 
-                        handleText(e.target.value)
-                    }}
-                    onChange={e => setInputValue(e.target.value)}
-                    defaultValue={inputValue}
-                />
-            }
+            <DefaultTextArea 
+                content={content}
+                handleText={handleText}
+                variant='plain'
+            />
+            <p className={styles['tags-box']}>{tags.join(', ')}</p>
             <Xmark removeAction={removeAction} />
         </div>
     )

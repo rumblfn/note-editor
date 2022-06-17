@@ -24,17 +24,16 @@ export const NewNote:FC = () => {
             tags: []
         }
     ]);
-    const [tags, setTags] = useState<string[]>([])
 
     const publishNote = () => {
         setModalActive(false);
-        addNote(noteTitle, actions, id, tags);
+        addNote(noteTitle, actions, id);
         navigate('/notes');
     }
 
     return (
         <NoteActionsContext.Provider value={{
-            setActions, actions, publishNote: setModalActive, setTags
+            setActions, actions, publishNote: setModalActive
         }}>
             <div>
                 <NewNoteInstruments />
