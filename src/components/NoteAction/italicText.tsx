@@ -26,7 +26,7 @@ export const ItalicTextNote:FC<ItalicTextNoteProps> = ({
                 content={content}
                 variant='italic'
             />
-            <p>{tags.join(', ')}</p>
+            <p className={styles['tags-box']}>{tags.join(', ')}</p>
             <Xmark removeAction={removeAction} />
         </div>
     )

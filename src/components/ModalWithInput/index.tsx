@@ -1,4 +1,6 @@
 import { FC } from "react";
+import { DefaultInput } from "../DefaultInput";
+import { Button } from "../NoteWhiteList/Button";
 import styles from './style.module.scss'
 
 interface ModalWithInputProps {
@@ -13,15 +15,18 @@ export const ModalWithInput:FC<ModalWithInputProps> = ({publishNote, setTitle, s
             <div className={styles.modal__content} onClick={e => e.stopPropagation()}>
                 <div>
                     <h4>Title for note</h4>
-                    <input type="text"
+                    <input className={styles.input} type="text"
                         placeholder="type title here"
                         onChange={e => setTitle(e.target.value)}
                     />
                 </div>
                 <div className={styles.modal__submit}>
-                    <button onClick={publishNote}>
-                        Add
-                    </button>
+                    <Button
+                        click={publishNote}
+                        valueToSet={false}
+                        text='Add'
+                        variant="small"
+                    />
                 </div>
             </div>
         </div>

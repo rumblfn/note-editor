@@ -12,7 +12,7 @@ interface ButtonProps {
 }
 
 export const Button:FC<ButtonProps> = ({
-    handler, valueToSet = true, text = 'Next', variant = 'default', ml = '0px', click, upload
+    handler, valueToSet = true, text = 'Next', variant = 'default', ml = '0px', click
 }) => {
     return (
         <button style={{marginLeft: ml}}
@@ -26,10 +26,7 @@ export const Button:FC<ButtonProps> = ({
                 }
             }}
         >
-            {upload ? 
-                <label htmlFor="file-upload">{text}</label>
-                : <span>{text}</span>
-            }
+            <span>{text}</span>
         </button>
     )
 }
