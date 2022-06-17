@@ -5,11 +5,12 @@ export const addNote = (
     title: string, 
     actions: NoteAction[], 
     id: string,
+    tags: string[],
 ) => {
     return async (dispatch: Dispatch<AddNoteAction>) => {
         dispatch({
             type: NoteActionTypesReducer.ADD_NOTE,
-            payload: { id, title, actions }
+            payload: { id, title, actions, tags }
         })
     }
 }

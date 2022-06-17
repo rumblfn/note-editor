@@ -16,11 +16,13 @@ export enum NoteActionTypes {
 export interface HeadingAction {
     type: NoteActionTypes.HEADING;
     content: string;
+    tags: string[];
 }
 
 export interface QuoteAction {
     type: NoteActionTypes.QUOTE;
     content: string;
+    tags: string[];
 }
 
 export interface ImageAction {
@@ -31,11 +33,13 @@ export interface ImageAction {
 export interface TextAction {
     type: NoteActionTypes.TEXT;
     content: string;
+    tags: string[];
 }
 
 export interface ItalicTextAction {
     type: NoteActionTypes.ITALIC_TEXT;
     content: string;
+    tags: string[];
 }
 
 export interface CodeTextAction {
@@ -47,6 +51,7 @@ export interface CodeTextAction {
 export interface BoldTextAction {
     type: NoteActionTypes.BOLD_TEXT;
     content: string;
+    tags: string[];
 }
 
 export type NoteAction = 
@@ -61,6 +66,7 @@ export type NoteAction =
 export interface OneNote {
     id: string;
     title: string;
+    tags: string[];
     actions: NoteAction[];
 }
 

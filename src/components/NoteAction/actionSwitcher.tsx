@@ -15,7 +15,14 @@ interface ActionSwitcherProps {
 export const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
     let content = action.content
 
-    useEffect(() => {console.log(content)}, [content])
+    const lstOfBreakingTypes = [NoteActionTypes.IMAGE, NoteActionTypes.CODE_TEXT]
+    console.log(action.type)
+
+    useEffect(() => {
+        if (!lstOfBreakingTypes.includes(action.type)) {
+            console.log(content)
+        }
+    }, [content])
 
     switch (action.type) {
         case NoteActionTypes.HEADING:
