@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/note-editor/static/css/main.1add75bc.css",
+    "main.js": "/note-editor/static/js/main.7676147f.js",
+    "index.html": "/note-editor/index.html",
+    "main.1add75bc.css.map": "/note-editor/static/css/main.1add75bc.css.map",
+    "main.7676147f.js.map": "/note-editor/static/js/main.7676147f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1add75bc.css",
+    "static/js/main.7676147f.js"
+  ]
+}
