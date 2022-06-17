@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect } from "react"
 import { NoteAction, NoteActionTypes } from "../../types/note"
 import { BoldTextNote } from "./bold"
 import { CodeNote } from "./code"
@@ -13,25 +13,28 @@ interface ActionSwitcherProps {
 }
 
 export const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
+    let content = action.content
+
+    useEffect(() => {console.log(content)}, [content])
 
     switch (action.type) {
         case NoteActionTypes.HEADING:
-            return <HeadingNote content={action.content}/>
+            return <HeadingNote content={content}/>
         case NoteActionTypes.QUOTE:
-            return <QuoteNote content={action.content}/>
+            return <QuoteNote content={content}/>
         case NoteActionTypes.IMAGE:
-            return <ImageNote content={action.content}/>
+            return <ImageNote content={content}/>
         case NoteActionTypes.TEXT:
-            return <TextNote content={action.content}/>
+            return <TextNote content={content}/>
         case NoteActionTypes.ITALIC_TEXT:
-            return <ItalicTextNote content={action.content}/>
+            return <ItalicTextNote content={content}/>
         case NoteActionTypes.CODE_TEXT:
             return <CodeNote
                     language={action.language}
-                    content={action.content}
+                    content={content}
                 />
         case NoteActionTypes.BOLD_TEXT:
-            return <BoldTextNote content={action.content}/>
+            return <BoldTextNote content={content}/>
         default:
             return null
     }

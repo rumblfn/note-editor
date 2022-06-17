@@ -1,40 +1,33 @@
-.heading {
+.heading,
+.bold,
+.code,
+.italic {
     background-color: transparent;
     padding: 8px 12px;
+    outline: none;
     width: 100%;
-    outline: 0;
-    border-width: 0 0 2px;
-    border-color: var(--content-color);
+    border-radius: 4px;
     resize: none;
-    height: 40px;
+    border-color: var(--content-color);
     overflow: hidden;
+}
+
+.heading {
+    border-radius: 0px;
+    border-width: 0 0 2px;
+    height: 40px;
     margin-bottom: 22px;
 }
 
 .bold {
-    background-color: transparent;
-    padding: 8px 12px;
-    resize: none;
     height: 40px;
-    overflow: hidden;
     font-weight: bold;
-    width: 100%;
 }
 
 .code {
-    background-color: transparent;
-    padding: 8px 12px;
-    resize: none;
     height: 90px;
-    overflow: hidden;
-    width: 80%;
 }
 
 .italic {
-    background-color: transparent;
-    padding: 8px 12px;
-    resize: none;
-    overflow: hidden;
     font-style: italic;
-    width: 100%;
 }
