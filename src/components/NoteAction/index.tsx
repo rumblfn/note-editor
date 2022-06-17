@@ -11,6 +11,7 @@ interface Props {
 }
 
 export const NoteActionComponent:FC<Props> = ({action, index, actions}) => {
+
     const contextStore = useContext(NoteActionsContext)
     if (!contextStore?.setActions) {
         return <></>
@@ -27,6 +28,19 @@ export const NoteActionComponent:FC<Props> = ({action, index, actions}) => {
     const handleText = (text: string) => {
         const currentAction = actions[index]
         currentAction.content = text;
+
+        if (currentAction.type !== NoteActionTypes.IMAGE 
+            && currentAction.type !== NoteActionTypes.CODE_TEXT
+        ) {
+            const tags: string[] = []
+            currentAction.content.split(' ').forEach(sub => {
+                if (sub[0] === '#' && sub.length > 0) {
+                    tags.push(sub)
+                }
+            })
+
+            currentAction.tags = [...tags]
+        }
 
         setActions([
             ...actions.slice(0, index),
