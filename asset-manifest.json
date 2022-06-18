@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.29222dbe.css",
-    "main.js": "/static/js/main.bc1940f6.js",
-    "index.html": "/index.html",
-    "main.29222dbe.css.map": "/static/css/main.29222dbe.css.map",
-    "main.bc1940f6.js.map": "/static/js/main.bc1940f6.js.map"
+    "main.css": "/note-editor/static/css/main.29222dbe.css",
+    "main.js": "/note-editor/static/js/main.bc1940f6.js",
+    "index.html": "/note-editor/index.html",
+    "main.29222dbe.css.map": "/note-editor/static/css/main.29222dbe.css.map",
+    "main.bc1940f6.js.map": "/note-editor/static/js/main.bc1940f6.js.map"
   },
   "entrypoints": [
     "static/css/main.29222dbe.css",
