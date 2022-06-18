@@ -36,13 +36,9 @@ export const ModalWithInput:FC<ModalWithInputProps> = ({publishNote, setTitle, s
     const [newTagsFiledDebounced] = useDebounce(newTagsField, 500)
 
     useEffect(() => {
-        const tagsField: string[] = []
-        newTagsFiledDebounced.split(' ').forEach(tag => {
-            if (tag[0] === '#' && tag.length > 1) {
-                tagsField.push(tag)
-            }
-        })
-        setNewTags(prev => [...prev, ...tagsField])
+        let regex = /#(\w*[0-9a-zA-Zа-яA-Я]+\w*[0-9a-zA-Zа-яA-Я])/gi;
+        let matches = newTagsFiledDebounced.match(regex);
+        setNewTags(prev => [...prev, ...matches || []])
     }, [newTagsFiledDebounced])
     
     return (
