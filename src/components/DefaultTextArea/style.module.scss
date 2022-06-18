@@ -5,35 +5,28 @@
 .plain {
     background-color: transparent;
     padding: 8px 12px;
-    outline: none;
     width: 100%;
-    border-radius: 4px;
-    resize: none;
-    border-color: var(--content-color);
+    height: fit-content;
     overflow: hidden;
+    border-bottom: 2px solid var(--content-color);
 }
 
 .heading {
-    border-radius: 0px;
-    border-width: 0 0 2px;
-    height: 40px;
     margin-bottom: 22px;
 }
 
 .bold {
-    height: 100px;
     font-weight: bold;
 }
 
 .code {
-    height: 90px;
+    resize: none;
+    height: 140px;
 }
 
 .italic {
     font-style: italic;
-    height: 120px;
 }
 
 .plain {
-    height: 150px;
 }

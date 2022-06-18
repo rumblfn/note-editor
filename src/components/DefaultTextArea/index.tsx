@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import styles from './style.module.scss'
 
 interface DefaultTextAreaProps {
@@ -12,21 +12,31 @@ export const DefaultTextArea:FC<DefaultTextAreaProps> = ({
 }) => {
     const [inputValue, setInputValue] = useState<string>(content);
 
-    const handleKeyDown = (e: any) => {
-        e.target.style.height = 'inherit';
-        e.target.style.height = `${e.target.scrollHeight}px`;
-      }
+    const matchHashTags = (text: string) => {
+        let string = text;
+        let regex = /#(\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/gi;
+        let matches = string.match(regex);
+        if (matches) {
+            for (let match of matches) {
+                string = string.replace(match, ` <span style="color: blue"> ${ match } </span> `)
+            }
+        }
+        setInputValue(string)
+    }
+
+    useEffect(() => {
+        matchHashTags(content)
+    }, [content])
 
     return (
-        <textarea 
-            className={styles[variant]}
-            onBlur={(e) => {
-                handleText(e.target.value)
-            }}
-            onInput={handleKeyDown}
-            placeholder={variant}
-            onChange={e => setInputValue(e.target.value)}
-            value={inputValue}
-        />
+        <div contentEditable
+            className={styles[variant]} 
+            onBlur={e => {
+                handleText(e.target.innerText)
+                setInputValue(e.target.innerText)
+            }} 
+            dangerouslySetInnerHTML={{
+                __html: inputValue ? inputValue : variant
+        }}/>
     )
 }

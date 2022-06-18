@@ -1,7 +1,7 @@
 import { FC, useContext, useState } from "react";
 import { useComboboxControls } from "react-datalist-input";
 import { DataList } from "../DataListInput";
-import { DefaultTextArea } from "../DefaultTextArea";
+import { DefaultCodeTextArea } from "../DefaultTextArea/code";
 import { Button } from "../NoteWhiteList/Button";
 import { SyntaxCode } from "../SyntaxCode";
 import { Xmark } from "../Xmark";
@@ -32,7 +32,7 @@ export const CodeNote: FC<CodeNoteProps> = ({content,language}) => {
   return (
     <div className={styles["action-box"]}>
       {aboutEditorMode ? 
-        <DefaultTextArea 
+        <DefaultCodeTextArea 
           handleText={handleText}
           content={content}
           variant='code'
