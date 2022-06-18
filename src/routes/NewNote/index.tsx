@@ -27,9 +27,9 @@ export const NewNote:FC<NewNoteProps> = ({
     const [modalActive, setModalActive] = useState<boolean>(false);
     const [noteTitle, setNoteTitle] = useState<string>('');
 
-    const publishNote = () => {
+    const publishNote = (tags: string[]) => {
         setModalActive(false);
-        addNote(noteTitle, actions, id);
+        addNote(noteTitle, actions, id, tags);
         navigate('/notes');
     }
 
