@@ -9,6 +9,7 @@
     height: fit-content;
     overflow: hidden;
     border-bottom: 2px solid var(--content-color);
+    outline: none;
 }
 
 .heading {
@@ -22,6 +23,7 @@
 .code {
     resize: none;
     height: 140px;
+    border: 2px solid var(--content-color);
 }
 
 .italic {

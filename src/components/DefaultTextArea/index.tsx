@@ -14,11 +14,11 @@ export const DefaultTextArea:FC<DefaultTextAreaProps> = ({
 
     const matchHashTags = (text: string) => {
         let string = text;
-        let regex = /#(\w*[0-9a-zA-Z]+\w*[0-9a-zA-Z])/gi;
+        let regex = /#(\w*[0-9a-zA-Zа-яA-Я]+\w*[0-9a-zA-Zа-яA-Я])/gi;
         let matches = string.match(regex);
         if (matches) {
             for (let match of matches) {
-                string = string.replace(match, ` <span style="color: blue"> ${ match } </span> `)
+                string = string.replace(match, `<span style="color: blue">${ match }</span>`)
             }
         }
         setInputValue(string)
@@ -29,7 +29,8 @@ export const DefaultTextArea:FC<DefaultTextAreaProps> = ({
     }, [content])
 
     return (
-        <div contentEditable
+        <pre>
+            <div contentEditable
             className={styles[variant]} 
             onBlur={e => {
                 handleText(e.target.innerText)
@@ -38,5 +39,6 @@ export const DefaultTextArea:FC<DefaultTextAreaProps> = ({
             dangerouslySetInnerHTML={{
                 __html: inputValue ? inputValue : variant
         }}/>
+        </pre>
     )
 }
