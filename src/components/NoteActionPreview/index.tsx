@@ -1,4 +1,4 @@
-import { FC } from "react"
+import React, { FC } from "react"
 import { NoteAction, NoteActionTypes } from "../../types/note"
 import { SyntaxCodePreview } from "./code";
 import { Heading } from "./heading";
@@ -10,7 +10,7 @@ interface ActionSwitcherProps {
     action: NoteAction;
 }
 
-export const ActionSwitcherPreview:FC<ActionSwitcherProps> = ({action}) => {
+const ActionSwitcherPreview:FC<ActionSwitcherProps> = ({action}) => {
 
     switch (action.type) {
         case NoteActionTypes.HEADING:
@@ -34,3 +34,5 @@ export const ActionSwitcherPreview:FC<ActionSwitcherProps> = ({action}) => {
             return null
     }
 }
+
+export default ActionSwitcherPreview

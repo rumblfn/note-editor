@@ -1,11 +1,10 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import FilteredTagsContext from "../../context";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import NoteActionsContext from "../../routes/NewNote/context";
 import { NoteAction, OneNote } from "../../types/note";
-import { ActionSwitcherPreview } from "../NoteActionPreview";
+import ActionSwitcherPreview from "../NoteActionPreview";
 import styles from './style.module.scss'
 
 interface NotesListProps {
@@ -15,30 +14,19 @@ interface NotesListProps {
     => void
 }
 
-export const NotesList:FC<NotesListProps> = ({setActions}) => {
-    const navigate = useNavigate()
-    const {notes} = useTypedSelector(state => state.note)
-    const {removeNote} = useActions()
-
-    const context = useContext(FilteredTagsContext)
-    if (!context || !context.tags)
-        return null
-    const { tags } = context
-
-    let notesToRender: OneNote[] = []
-
-    const checkTagExist = (tags: string[], sub: string) => {
-        return tags.find((tag: string) => {
-            if (tag) {
-                if (tag.includes(sub)) {
-                    return true
-                }
+const checkTagExist = (tags: string[], sub: string) => {
+    return tags.find((tag: string) => {
+        if (tag) {
+            if (tag.includes(sub)) {
+                return true
             }
-            return false
-        })
-    }
+        }
+        return false
+    })
+}
 
-
+const FilterNotes = (notes: OneNote[], tags: string[]) => {
+    const notesToRender: OneNote[] = []
     notes.forEach(note => {
         if (note.tags) {
             for (let tag of tags) {
@@ -51,6 +39,23 @@ export const NotesList:FC<NotesListProps> = ({setActions}) => {
             }
         }
     })
+    return notesToRender
+}
+
+export const NotesList:FC<NotesListProps> = ({setActions}) => {
+    const navigate = useNavigate()
+    const {notes} = useTypedSelector(state => state.note)
+    const {removeNote} = useActions()
+
+    const context = useContext(FilteredTagsContext)
+
+    const tags = useMemo(() => {
+        if (context && context.tags)
+            return context.tags
+        return []
+    }, [context])
+
+    let notesToRender = useMemo(() => FilterNotes(notes, tags), [notes, tags])
 
     if (!notesToRender.length) {
         notesToRender = notes

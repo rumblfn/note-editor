@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react"
+import React, { FC } from "react"
 import { NoteAction, NoteActionTypes } from "../../types/note"
 import { BoldTextNote } from "./bold"
 import { CodeNote } from "./code"
@@ -12,7 +12,7 @@ interface ActionSwitcherProps {
     action: NoteAction;
 }
 
-export const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
+const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
     const content = action.content
 
     switch (action.type) {
@@ -52,3 +52,5 @@ export const ActionSwitcher:FC<ActionSwitcherProps> = ({action}) => {
             return null
     }
 }
+
+export default ActionSwitcher

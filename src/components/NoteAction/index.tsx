@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 import NoteActionsContext from "../../routes/NewNote/context";
 import { NoteAction, NoteActionTypes } from "../../types/note";
-import { ActionSwitcher } from "./actionSwitcher";
+import ActionSwitcher from "./actionSwitcher";
 import NoteActionsContextHandlers from "./context";
 
 interface Props {
