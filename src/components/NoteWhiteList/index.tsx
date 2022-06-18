@@ -24,5 +24,5 @@ export const NoteWhiteList:FC = () => {
                 <Button handler={contextStore.publishNote}/>
             </div>
         )
-    return <></>
+    return null
 }

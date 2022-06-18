@@ -14,7 +14,7 @@ export const NoteActionComponent:FC<Props> = ({action, index, actions}) => {
 
     const contextStore = useContext(NoteActionsContext)
     if (!contextStore?.setActions) {
-        return <></>
+        return null
     }
     const {setActions} = contextStore
 

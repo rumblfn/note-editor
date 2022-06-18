@@ -8,7 +8,7 @@ export const NewNoteInstruments:FC = () => {
     
     const contextStore = useContext(NoteActionsContext)
     if (!contextStore?.setActions) {
-        return <></>
+        return null
     }
     const {setActions} = contextStore
     

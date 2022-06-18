@@ -15,7 +15,7 @@ export const ItalicTextNote:FC<ItalicTextNoteProps> = ({
     const contextStore = useContext(NoteActionsContextHandlers)
 
     if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
-        return <></>
+        return null
 
     const {handleText, removeAction} = contextStore
 

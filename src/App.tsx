@@ -7,12 +7,21 @@ import Header from './components/Header';
 import FilteredTagsContext from './context';
 import { NewNote } from './routes/NewNote';
 import { NotesPage } from './routes/Notes';
+import { NoteAction, NoteActionTypes } from './types/note';
 
 const tagsSearched = {}
 
 function App() {
   const [tags, setTags] = useState<string[]>([]);
   const [tagsDebounced] = useDebounce(tags, 500)
+
+  const [actions, setActions] = useState<NoteAction[]>([
+    {
+        type: NoteActionTypes.HEADING,
+        content: '',
+        tags: []
+    }
+]);
 
   return (
     <FilteredTagsContext.Provider value={{
@@ -21,8 +30,12 @@ function App() {
       <div className="App">
         <Header/>
         <Routes>
-          <Route path="/new" element={<NewNote />} />
-          <Route path="/*" element={<NotesPage />} />
+          <Route path="/new" element={
+            <NewNote actions={actions} setActions={setActions}/>
+          } />
+          <Route path="/*" element={
+            <NotesPage setActions={setActions} />
+          } />
         </Routes>
         <Background/>
       </div>

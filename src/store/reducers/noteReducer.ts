@@ -13,6 +13,10 @@ export const noteReducer = (state = initialState, action: NoteActionReducer) => 
                     action.payload
                 ]
             }
+        case NoteActionTypesReducer.REMOVE_NOTE:
+            return { ...state,
+                notes: [...state.notes.filter(note => note.id !== action.payload)]
+            }
         default:
             return state
     }

@@ -13,7 +13,7 @@ export const HeadingNote:FC<HeadingNoteProps> = ({content, tags}) => {
     const contextStore = useContext(NoteActionsContextHandlers)
 
     if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
-        return <></>
+        return null
 
     const {handleText, removeAction} = contextStore
 

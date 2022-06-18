@@ -15,7 +15,7 @@ interface CodeNoteProps {
 }
 
 export const CodeNote: FC<CodeNoteProps> = ({content,language}) => {
-  const [aboutEditorMode, setAboutEditorMode] = useState<boolean>(true);
+  const [aboutEditorMode, setAboutEditorMode] = useState<boolean>(false);
 
   const { setValue, value } = useComboboxControls({
     initialValue: language,
@@ -25,7 +25,7 @@ export const CodeNote: FC<CodeNoteProps> = ({content,language}) => {
   const contextStore = useContext(NoteActionsContextHandlers)
 
   if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
-      return <></>
+      return null
 
   const {handleText, removeAction, handleLang} = contextStore
 

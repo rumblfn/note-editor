@@ -2,6 +2,23 @@
     color: var(--content-color-2);
 }
 
+.tool {
+    cursor: pointer;
+
+    &s {
+        display: flex;
+        gap: 16px;
+        opacity: 0;
+    
+    }
+
+    &-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
 .note-box {
     border: 2px solid var(--content-color);
     border-radius: 12px;
@@ -32,6 +49,10 @@
 
     &:hover::-webkit-scrollbar-thumb {
         background-color: var(--content-color);
+    }
+
+    &:hover .tools {
+        opacity: 1;
     }
 }
 

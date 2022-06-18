@@ -70,13 +70,19 @@ export interface OneNote {
     actions: NoteAction[];
 }
 
-export type NoteActionReducer = AddNoteAction;
+export type NoteActionReducer = AddNoteAction | RemoveNoteAction;
+
+export enum NoteActionTypesReducer {
+    ADD_NOTE = "ADD_NOTE",
+    REMOVE_NOTE = "REMOVE_NOTE"
+}
 
 export interface AddNoteAction {
     type: NoteActionTypesReducer.ADD_NOTE;
     payload: OneNote;
 }
 
-export enum NoteActionTypesReducer {
-    ADD_NOTE = "ADD_NOTE"
+export interface RemoveNoteAction {
+    type: NoteActionTypesReducer.REMOVE_NOTE;
+    payload: string;
 }

@@ -8,7 +8,17 @@ import { useNavigate } from "react-router-dom";
 import NoteActionsContext from "./context";
 import { nanoid } from "nanoid";
 
-export const NewNote:FC = () => {
+interface NewNoteProps {
+    actions: NoteAction[];
+    setActions: (newState: NoteAction[] | 
+        ((prevState: NoteAction[]) 
+            => NoteAction[])) 
+    => void
+}
+
+export const NewNote:FC<NewNoteProps> = ({
+    actions, setActions
+}) => {
     const navigate = useNavigate()
     const id = nanoid(8)
 
@@ -16,14 +26,6 @@ export const NewNote:FC = () => {
 
     const [modalActive, setModalActive] = useState<boolean>(false);
     const [noteTitle, setNoteTitle] = useState<string>('');
-
-    const [actions, setActions] = useState<NoteAction[]>([
-        {
-            type: NoteActionTypes.HEADING,
-            content: '',
-            tags: []
-        }
-    ]);
 
     const publishNote = () => {
         setModalActive(false);

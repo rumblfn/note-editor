@@ -27,7 +27,7 @@ export const ImageNote:FC<QuoteNoteProps> = ({content}) => {
     const contextStore = useContext(NoteActionsContextHandlers)
 
     if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
-        return <></>
+        return null
 
     const {handleText, removeAction} = contextStore
 

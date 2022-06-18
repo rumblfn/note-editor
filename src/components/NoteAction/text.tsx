@@ -1,4 +1,4 @@
-import { FC, useContext, useState } from "react";
+import { FC, useContext } from "react";
 import { DefaultTextArea } from "../DefaultTextArea";
 import { Xmark } from "../Xmark";
 import NoteActionsContextHandlers from "./context";
@@ -12,13 +12,10 @@ interface TextNoteProps {
 export const TextNote:FC<TextNoteProps> = ({
     content, tags
 }) => {
-    const [inputValue, setInputValue] = useState<string>(content);
-    const [aboutEditorMode, setAboutEditorMode] = useState<boolean>(false)
-
     const contextStore = useContext(NoteActionsContextHandlers)
 
     if (!contextStore?.handleText && !contextStore?.removeAction && !contextStore?.handleLang)
-        return <></>
+        return null
 
     const {handleText, removeAction} = contextStore
 
