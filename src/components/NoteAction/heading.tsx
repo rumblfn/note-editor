@@ -26,7 +26,7 @@ export const HeadingNote:FC<HeadingNoteProps> = ({content, tags}) => {
             />
             <p style={{top: -26}} 
                 className={styles['tags-box']}
-            >{tags.join(', ')}
+            >{tags.join('10, ')}
             </p>
             <Xmark removeAction={removeAction} />
         </div>

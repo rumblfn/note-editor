@@ -29,7 +29,7 @@ export const DefaultTextArea:FC<DefaultTextAreaProps> = ({
     }, [content])
 
     return (
-        <pre>
+        <pre style={{wordBreak: 'break-all'}}>
             <div contentEditable
             className={styles[variant]} 
             onBlur={e => {

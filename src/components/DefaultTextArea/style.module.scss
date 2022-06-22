@@ -10,6 +10,14 @@
     overflow: hidden;
     border-bottom: 2px solid var(--content-color);
     outline: none;
+    word-break: break-all;
+    word-wrap: break-word;
+    display: inline-block;
+    white-space: pre-line;
+    overflow-wrap: break-word;
+    -ms-word-break: break-word;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .heading {
@@ -24,6 +32,7 @@
     resize: none;
     height: 140px;
     border: 2px solid var(--content-color);
+    word-break: normal;
 }
 
 .italic {
