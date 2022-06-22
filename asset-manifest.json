@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/note-editor/static/css/main.e969a2d1.css",
-    "main.js": "/note-editor/static/js/main.be09e231.js",
+    "main.css": "/note-editor/static/css/main.fc9f0352.css",
+    "main.js": "/note-editor/static/js/main.68e599ba.js",
     "index.html": "/note-editor/index.html",
-    "main.e969a2d1.css.map": "/note-editor/static/css/main.e969a2d1.css.map",
-    "main.be09e231.js.map": "/note-editor/static/js/main.be09e231.js.map"
+    "main.fc9f0352.css.map": "/note-editor/static/css/main.fc9f0352.css.map",
+    "main.68e599ba.js.map": "/note-editor/static/js/main.68e599ba.js.map"
   },
   "entrypoints": [
-    "static/css/main.e969a2d1.css",
-    "static/js/main.be09e231.js"
+    "static/css/main.fc9f0352.css",
+    "static/js/main.68e599ba.js"
   ]
 }
